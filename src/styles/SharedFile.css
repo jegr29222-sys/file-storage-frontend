@@ -1,0 +1,96 @@
+/* Shared file styling */
+.shared-file-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+
+.shared-file-box {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.shared-file-box h1 {
+  color: #667eea;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.file-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.file-details h2 {
+  color: #333;
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  word-break: break-word;
+}
+
+.file-details p {
+  color: #666;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.file-size {
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 20px;
+}
+
+.download-btn, .open-link-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: transform 0.2s;
+}
+
+.download-btn:hover, .open-link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.created-date {
+  margin-top: 20px;
+  color: #999;
+  font-size: 12px;
+}
+
+.loading {
+  color: #667eea;
+  font-size: 16px;
+}
+
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 15px;
+  border-radius: 6px;
+  border-left: 4px solid #c33;
+  margin-bottom: 20px;
+}
