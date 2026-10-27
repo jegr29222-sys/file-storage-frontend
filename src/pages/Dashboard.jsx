@@ -21,6 +21,7 @@ function Dashboard({ user, onLogout }) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
     fetchFiles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentFolder]);
 
   const fetchFiles = async () => {

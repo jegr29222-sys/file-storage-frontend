@@ -6,8 +6,6 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import SharedFile from './pages/SharedFile';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
-
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [user, setUser] = useState(null);

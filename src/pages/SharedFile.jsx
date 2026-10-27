@@ -13,6 +13,7 @@ function SharedFile() {
 
   useEffect(() => {
     fetchSharedFile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shareToken]);
 
   const fetchSharedFile = async () => {
