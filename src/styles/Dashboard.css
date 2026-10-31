@@ -778,32 +778,37 @@
 }
 
 /* Sidebar Toggle Button */
-.sidebar-toggle {
+.sidebar-toggle-wrapper {
   position: absolute;
-  right: -20px;
+  right: -24px;
   bottom: 20px;
-  width: 40px;
-  height: 40px;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.sidebar-toggle {
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-full);
   background: var(--accent-gradient);
-  border: 2px solid var(--bg-primary);
+  border: 3px solid var(--bg-primary);
   color: var(--text-inverse);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all var(--transition-base);
-  z-index: 60;
   box-shadow:
     0 8px 30px -8px var(--accent-glow-strong),
-    0 0 0 2px var(--border-subtle);
+    0 0 0 3px var(--border-subtle);
+  pointer-events: auto;
 }
 
 .sidebar-toggle:hover {
-  transform: scale(1.1);
+  transform: scale(1.12);
   box-shadow:
     0 12px 40px -10px var(--accent-glow-strong),
-    0 0 0 2px var(--accent-primary);
+    0 0 0 3px var(--accent-primary);
 }
 
 .sidebar-toggle:focus-visible {
@@ -812,12 +817,17 @@
 }
 
 .sidebar-toggle:active {
-  transform: scale(0.95);
+  transform: scale(0.92);
   transition-duration: 0.1s;
 }
 
+.sidebar.closed .sidebar-toggle-wrapper {
+  right: -24px;
+}
+
 .sidebar.closed .sidebar-toggle {
-  right: -20px;
+  width: 48px;
+  height: 48px;
 }
 
 /* Mobile sidebar backdrop */
@@ -1450,32 +1460,37 @@
 }
 
 /* Sidebar Toggle Button */
-.sidebar-toggle {
+.sidebar-toggle-wrapper {
   position: absolute;
-  right: -20px;
+  right: -24px;
   bottom: 20px;
-  width: 40px;
-  height: 40px;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.sidebar-toggle {
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-full);
   background: var(--accent-gradient);
-  border: 2px solid var(--bg-primary);
+  border: 3px solid var(--bg-primary);
   color: var(--text-inverse);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all var(--transition-base);
-  z-index: 60;
   box-shadow:
     0 8px 30px -8px var(--accent-glow-strong),
-    0 0 0 2px var(--border-subtle);
+    0 0 0 3px var(--border-subtle);
+  pointer-events: auto;
 }
 
 .sidebar-toggle:hover {
-  transform: scale(1.1);
+  transform: scale(1.12);
   box-shadow:
     0 12px 40px -10px var(--accent-glow-strong),
-    0 0 0 2px var(--accent-primary);
+    0 0 0 3px var(--accent-primary);
 }
 
 .sidebar-toggle:focus-visible {
@@ -1484,12 +1499,17 @@
 }
 
 .sidebar-toggle:active {
-  transform: scale(0.95);
+  transform: scale(0.92);
   transition-duration: 0.1s;
 }
 
+.sidebar.closed .sidebar-toggle-wrapper {
+  right: -24px;
+}
+
 .sidebar.closed .sidebar-toggle {
-  right: -20px;
+  width: 48px;
+  height: 48px;
 }
 
 /* Mobile sidebar backdrop */

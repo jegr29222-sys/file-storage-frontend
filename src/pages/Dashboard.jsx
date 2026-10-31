@@ -29,7 +29,15 @@ function Dashboard() {
   const [bulkAction, setBulkAction] = useState(null);
   const [shareModalFile, setShareModalFile] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const lastSelectedRef = useRef(null);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     if (activeTab === 'shared') {
@@ -296,7 +304,7 @@ function Dashboard() {
       </header>
 
       <div className="dashboard-content">
-        {window.innerWidth <= 768 && sidebarOpen && (
+        {isMobile && sidebarOpen && (
           <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />
         )}
         <aside className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
@@ -313,20 +321,22 @@ function Dashboard() {
               <button className={activeTab === 'trash' ? 'active' : ''} onClick={() => { setActiveTab('trash'); setSelectedFiles(new Set()); }}><span>Trash</span></button>
             </div>
           </div>
-          <button
-            className="sidebar-toggle"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            aria-label={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
-            aria-expanded={sidebarOpen}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              {sidebarOpen ? (
-                <path d="M15 18l-6-6 6-6" />
-              ) : (
-                <path d="M9 6l6 6-6 6" />
-              )}
-            </svg>
-          </button>
+          <div className="sidebar-toggle-wrapper">
+            <button
+              className="sidebar-toggle"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              aria-label={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
+              aria-expanded={sidebarOpen}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                {sidebarOpen ? (
+                  <path d="M15 18l-6-6 6-6" />
+                ) : (
+                  <path d="M9 6l6 6-6 6" />
+                )}
+              </svg>
+            </button>
+          </div>
         </aside>
 
         <main className="main-content">
