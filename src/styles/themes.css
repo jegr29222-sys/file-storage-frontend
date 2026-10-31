@@ -1,0 +1,158 @@
+/* Theme variables - Dark (default) */
+:root,
+[data-theme="dark"] {
+  --bg-primary: #050510;
+  --bg-secondary: rgba(10, 10, 20, 0.9);
+  --bg-tertiary: rgba(10, 10, 20, 0.8);
+  --bg-card: rgba(10, 10, 20, 0.95);
+  --bg-hover: rgba(255, 255, 255, 0.03);
+  --bg-active: rgba(255, 255, 255, 0.06);
+  --bg-input: rgba(255, 255, 255, 0.02);
+  --bg-input-focus: rgba(255, 255, 255, 0.04);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.15);
+  --border-focus: rgba(120, 80, 255, 0.5);
+  --border-accent: rgba(120, 80, 255, 0.3);
+  --text-primary: #fafafa;
+  --text-secondary: #e5e7eb;
+  --text-muted: #9ca3af;
+  --text-dim: #6b7280;
+  --text-inverse: #050510;
+  --success: #22c55e;
+  --success-glow: rgba(34, 197, 94, 0.4);
+  --danger: #ef4444;
+  --danger-glow: rgba(239, 68, 68, 0.4);
+  --danger-bg: rgba(239, 68, 68, 0.1);
+  --danger-border: rgba(239, 68, 68, 0.3);
+  --warning: #f59e0b;
+  --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 40px 80px -40px rgba(120, 80, 255, 0.3);
+  --shadow-xl: 0 60px 120px -60px rgba(120, 80, 255, 0.4);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 999px;
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', monospace;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: rgba(255, 255, 255, 0.95);
+  --bg-tertiary: rgba(255, 255, 255, 0.9);
+  --bg-card: rgba(255, 255, 255, 0.98);
+  --bg-hover: rgba(0, 0, 0, 0.02);
+  --bg-active: rgba(0, 0, 0, 0.04);
+  --bg-input: rgba(0, 0, 0, 0.015);
+  --bg-input-focus: rgba(0, 0, 0, 0.03);
+  --border-subtle: rgba(0, 0, 0, 0.05);
+  --border-default: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.12);
+  --border-focus: rgba(120, 80, 255, 0.5);
+  --border-accent: rgba(120, 80, 255, 0.4);
+  --text-primary: #0f172a;
+  --text-secondary: #1e293b;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+  --text-inverse: #ffffff;
+  --success: #16a34a;
+  --success-glow: rgba(22, 163, 74, 0.3);
+  --danger: #dc2626;
+  --danger-glow: rgba(220, 38, 38, 0.3);
+  --danger-bg: rgba(220, 38, 38, 0.08);
+  --danger-border: rgba(220, 38, 38, 0.25);
+  --warning: #d97706;
+  --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 40px 80px -40px rgba(120, 80, 255, 0.15);
+  --shadow-xl: 0 60px 120px -60px rgba(120, 80, 255, 0.2);
+}
+
+/* Color Scheme: Midnight Aurora (default) */
+[data-color-scheme="midnight"] {
+  --accent-primary: #7850ff;
+  --accent-secondary: #00dcff;
+  --accent-gradient: linear-gradient(135deg, #7850ff 0%, #00dcff 100%);
+  --accent-glow: rgba(120, 80, 255, 0.4);
+  --accent-glow-strong: rgba(120, 80, 255, 0.6);
+
+  /* Ambient orbs for midnight */
+  --orb-1: radial-gradient(circle, rgba(120, 80, 255, 0.35) 0%, transparent 70%);
+  --orb-2: radial-gradient(circle, rgba(0, 220, 255, 0.3) 0%, transparent 70%);
+  --orb-1-light: radial-gradient(circle, rgba(120, 80, 255, 0.1) 0%, transparent 70%);
+  --orb-2-light: radial-gradient(circle, rgba(0, 184, 212, 0.08) 0%, transparent 70%);
+  --auth-orb-1: radial-gradient(circle, rgba(120, 80, 255, 0.4) 0%, rgba(120, 80, 255, 0) 70%);
+  --auth-orb-2: radial-gradient(circle, rgba(0, 220, 255, 0.35) 0%, rgba(0, 220, 255, 0) 70%);
+  --auth-orb-1-light: radial-gradient(circle, rgba(120, 80, 255, 0.15) 0%, transparent 70%);
+  --auth-orb-2-light: radial-gradient(circle, rgba(0, 184, 212, 0.12) 0%, transparent 70%);
+}
+
+/* Color Scheme: Emerald Forest */
+[data-color-scheme="emerald"] {
+  --accent-primary: #10b981;
+  --accent-secondary: #34d399;
+  --accent-gradient: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  --accent-glow: rgba(16, 185, 129, 0.4);
+  --accent-glow-strong: rgba(16, 185, 129, 0.6);
+
+  /* Ambient orbs for emerald */
+  --orb-1: radial-gradient(circle, rgba(16, 185, 129, 0.35) 0%, transparent 70%);
+  --orb-2: radial-gradient(circle, rgba(52, 211, 153, 0.3) 0%, transparent 70%);
+  --orb-1-light: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+  --orb-2-light: radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, transparent 70%);
+  --auth-orb-1: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, rgba(16, 185, 129, 0) 70%);
+  --auth-orb-2: radial-gradient(circle, rgba(52, 211, 153, 0.35) 0%, rgba(52, 211, 153, 0) 70%);
+  --auth-orb-1-light: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+  --auth-orb-2-light: radial-gradient(circle, rgba(52, 211, 153, 0.12) 0%, transparent 70%);
+}
+
+/* Color Scheme: Golden Amber */
+[data-color-scheme="amber"] {
+  --accent-primary: #f59e0b;
+  --accent-secondary: #fbbf24;
+  --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  --accent-glow: rgba(245, 158, 11, 0.4);
+  --accent-glow-strong: rgba(245, 158, 11, 0.6);
+
+  /* Ambient orbs for amber */
+  --orb-1: radial-gradient(circle, rgba(245, 158, 11, 0.35) 0%, transparent 70%);
+  --orb-2: radial-gradient(circle, rgba(251, 191, 36, 0.3) 0%, transparent 70%);
+  --orb-1-light: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+  --orb-2-light: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
+  --auth-orb-1: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, rgba(245, 158, 11, 0) 70%);
+  --auth-orb-2: radial-gradient(circle, rgba(251, 191, 36, 0.35) 0%, rgba(251, 191, 36, 0) 70%);
+  --auth-orb-1-light: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+  --auth-orb-2-light: radial-gradient(circle, rgba(251, 191, 36, 0.12) 0%, transparent 70%);
+}
+
+/* Success/Danger colors adapt to color scheme */
+[data-color-scheme="emerald"] {
+  --success: #10b981;
+  --success-glow: rgba(16, 185, 129, 0.4);
+}
+
+[data-color-scheme="amber"] {
+  --success: #f59e0b;
+  --success-glow: rgba(245, 158, 11, 0.4);
+  --warning: #f59e0b;
+}
+
+/* Theme transition */
+* {
+  transition: background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

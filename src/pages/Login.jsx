@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
+import ThemeToggle from '../components/ThemeToggle';
 import '../styles/Auth.css';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
-
-function Login({ onLogin }) {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const { signIn } = useAuth();
+  const { colorScheme, setColorScheme, colorSchemes, scheme } = useTheme();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -18,15 +20,11 @@ function Login({ onLogin }) {
     setLoading(true);
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/auth/login`, {
-        email,
-        password
-      });
-
-      onLogin(response.data.token, response.data.user);
+      const { error } = await signIn(email, password);
+      if (error) throw error;
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.error || 'Login failed');
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -34,9 +32,22 @@ function Login({ onLogin }) {
 
   return (
     <div className="auth-container">
+      <ThemeToggle className="auth-theme-toggle" showColorSchemes />
+      <div className="auth-color-schemes" role="group" aria-label="Color scheme">
+        {colorSchemes.map(({ key, accentPrimary, accentSecondary, name, accentGradient }) => (
+          <button
+            key={key}
+            className={`color-scheme-btn-sm ${colorScheme === key ? 'active' : ''}`}
+            onClick={() => setColorScheme(key)}
+            aria-label={`Color scheme: ${name}`}
+            title={name}
+            style={{ '--scheme-gradient': accentGradient }}
+          />
+        ))}
+      </div>
       <div className="auth-box">
         <h1>File Storage</h1>
-        <h2>Login</h2>
+        <h2>Sign in to continue</h2>
 
         {error && <div className="error-message">{error}</div>}
 
@@ -48,6 +59,7 @@ function Login({ onLogin }) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              placeholder="you@example.com"
             />
           </div>
 
@@ -58,16 +70,17 @@ function Login({ onLogin }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              placeholder="••••••••"
             />
           </div>
 
-          <button type="submit" disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
+          <button type="submit" className="submit-btn" disabled={loading}>
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
 
         <p className="auth-link">
-          Don't have an account? <Link to="/register">Register here</Link>
+          Don't have an account? <Link to="/register">Create one</Link>
         </p>
       </div>
     </div>
