@@ -781,7 +781,8 @@
 .sidebar-toggle-wrapper {
   position: absolute;
   right: -24px;
-  bottom: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 60;
   pointer-events: none;
 }
@@ -1463,7 +1464,8 @@
 .sidebar-toggle-wrapper {
   position: absolute;
   right: -24px;
-  bottom: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 60;
   pointer-events: none;
 }
