@@ -46,8 +46,8 @@ function Login() {
         ))}
       </div>
       <div className="auth-box">
-        <h1>File Storage</h1>
-        <h2>Sign in to continue</h2>
+        <h1>File Storage 🧪</h1>
+        <h2>Sign in to continue (Auto-deploy test)</h2>
 
         {error && <div className="error-message">{error}</div>}
 
