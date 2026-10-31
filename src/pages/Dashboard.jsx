@@ -303,41 +303,42 @@ function Dashboard() {
         </div>
       </header>
 
+      {isMobile && sidebarOpen && (
+        <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />
+      )}
+      <aside className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
+        <div className="sidebar-inner">
+          <h3>Storage</h3>
+          <div className="storage-info">
+            <h3>Unlimited</h3>
+            <p>No storage limits</p>
+          </div>
+          <div className="folders">
+            <button className={activeTab === 'all' ? 'active' : ''} onClick={() => { setActiveTab('all'); setSelectedFiles(new Set()); }}><span>All Files</span></button>
+            <button className={activeTab === 'shared' ? 'active' : ''} onClick={() => { setActiveTab('shared'); setSelectedFiles(new Set()); }}><span>Shared with Me</span></button>
+            <button className={activeTab === 'links' ? 'active' : ''} onClick={() => { setActiveTab('links'); setSelectedFiles(new Set()); }}><span>Links</span></button>
+            <button className={activeTab === 'trash' ? 'active' : ''} onClick={() => { setActiveTab('trash'); setSelectedFiles(new Set()); }}><span>Trash</span></button>
+          </div>
+        </div>
+        <div className="sidebar-toggle-wrapper">
+          <button
+            className="sidebar-toggle"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            aria-label={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
+            aria-expanded={sidebarOpen}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {sidebarOpen ? (
+                <path d="M15 18l-6-6 6-6" />
+              ) : (
+                <path d="M9 6l6 6-6 6" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </aside>
+
       <div className={`dashboard-content ${sidebarOpen ? 'sidebar-open' : ''}`}>
-        {isMobile && sidebarOpen && (
-          <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />
-        )}
-        <aside className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
-          <div className="sidebar-inner">
-            <h3>Storage</h3>
-            <div className="storage-info">
-              <h3>Unlimited</h3>
-              <p>No storage limits</p>
-            </div>
-            <div className="folders">
-              <button className={activeTab === 'all' ? 'active' : ''} onClick={() => { setActiveTab('all'); setSelectedFiles(new Set()); }}><span>All Files</span></button>
-              <button className={activeTab === 'shared' ? 'active' : ''} onClick={() => { setActiveTab('shared'); setSelectedFiles(new Set()); }}><span>Shared with Me</span></button>
-              <button className={activeTab === 'links' ? 'active' : ''} onClick={() => { setActiveTab('links'); setSelectedFiles(new Set()); }}><span>Links</span></button>
-              <button className={activeTab === 'trash' ? 'active' : ''} onClick={() => { setActiveTab('trash'); setSelectedFiles(new Set()); }}><span>Trash</span></button>
-            </div>
-          </div>
-          <div className="sidebar-toggle-wrapper">
-            <button
-              className="sidebar-toggle"
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              aria-label={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
-              aria-expanded={sidebarOpen}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                {sidebarOpen ? (
-                  <path d="M15 18l-6-6 6-6" />
-                ) : (
-                  <path d="M9 6l6 6-6 6" />
-                )}
-              </svg>
-            </button>
-          </div>
-        </aside>
 
         <main className="main-content">
           {error && <div className="error-banner">{error}</div>}
