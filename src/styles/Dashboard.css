@@ -225,8 +225,9 @@
   max-width: 1600px;
   margin: 0 auto;
   gap: 32px;
-  padding: 36px 32px;
+  padding: 0 32px 36px 32px;
   animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  min-height: calc(100vh - 100px);
 }
 
 .sidebar {
@@ -235,20 +236,25 @@
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   padding: 28px;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border-subtle);
-  height: fit-content;
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  border-top: none;
+  border-left: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  height: 100%;
   box-shadow: var(--shadow-lg);
-  position: relative;
+  position: sticky;
+  top: 0;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
+  z-index: 5;
 }
 
 .sidebar::before {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: var(--radius-xl);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
   padding: 1px;
   background: linear-gradient(135deg, rgba(120, 80, 255, 0), rgba(0, 220, 255, 0));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -755,9 +761,7 @@
 
 /* Sidebar Toggle Button */
 .sidebar-toggle {
-  position: absolute;
-  top: 16px;
-  left: 16px;
+  margin-bottom: 20px;
   width: 40px;
   height: 40px;
   border-radius: var(--radius-full);
@@ -770,7 +774,6 @@
   justify-content: center;
   transition: all var(--transition-base);
   z-index: 20;
-  flex-shrink: 0;
 }
 
 .sidebar-toggle:hover {
@@ -788,6 +791,28 @@
 .sidebar-toggle:active {
   transform: scale(0.96);
   transition-duration: 0.1s;
+}
+
+.sidebar.closed .sidebar-toggle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mobile sidebar backdrop */
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 99;
+  animation: fade-in-up 0.2s ease-out;
+}
+
+@media (min-width: 769px) {
+  .sidebar-backdrop {
+    display: none;
+  }
 }
 
 /* Drop Zone Styles */
@@ -1548,12 +1573,39 @@
     width: 100%;
     padding: 20px;
     order: 2;
+    position: static;
+    border-radius: 0;
+    border: 1px solid var(--border-subtle);
+    height: auto;
+    min-height: 0;
+  }
+
+  .sidebar.open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 290px;
+    max-width: 85vw;
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    box-shadow: var(--shadow-xl);
+    overflow-y: auto;
+  }
+
+  .sidebar.closed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 60px;
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    box-shadow: var(--shadow-xl);
   }
 
   .sidebar-toggle {
-    position: static;
     margin-bottom: 12px;
-    align-self: flex-start;
   }
 
   .storage-info {
@@ -1563,25 +1615,23 @@
 
   .folders {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 8px;
   }
 
   .folders button {
-    width: auto;
-    flex: 1;
-    min-width: 120px;
-    margin-bottom: 0;
-    padding: 10px 14px;
-    font-size: 13px;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    font-size: 14px;
   }
 
   .folders button:hover {
-    padding-left: 14px;
+    padding-left: 20px;
   }
 
   .folders button.active {
-    padding-left: 14px;
+    padding-left: 20px;
   }
 
   .main-content {
