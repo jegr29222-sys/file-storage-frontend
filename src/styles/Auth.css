@@ -381,3 +381,145 @@
   outline: none;
   box-shadow: 0 0 0 3px var(--border-focus);
 }
+
+/* ========================================
+   MOBILE RESPONSIVE - Auth pages
+   ======================================== */
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 12px;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+
+  .auth-box {
+    padding: 32px 20px;
+    border-radius: var(--radius-lg);
+    max-width: 100%;
+    width: 100%;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .auth-box h1 {
+    font-size: 24px;
+  }
+
+  .auth-box h2 {
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  .form-group input {
+    padding: 14px 16px;
+    padding-right: 44px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .submit-btn {
+    padding: 16px 20px;
+    font-size: 15px;
+  }
+
+  .auth-link {
+    margin-top: 24px;
+    font-size: 14px;
+  }
+
+  .error-message {
+    padding: 14px 16px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .auth-theme-toggle {
+    top: 12px;
+    right: 12px;
+  }
+
+  .auth-theme-toggle .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .auth-color-schemes {
+    top: 12px;
+    left: 12px;
+    gap: 6px;
+  }
+
+  .color-scheme-btn-sm {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 360px) {
+  .auth-box {
+    padding: 28px 16px;
+  }
+
+  .auth-box h1 {
+    font-size: 22px;
+  }
+
+  .form-group input {
+    padding: 12px 14px;
+    padding-right: 40px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .auth-box:hover::before {
+    opacity: 0;
+  }
+
+  .field-wrapper:hover::after {
+    opacity: 0;
+  }
+
+  .submit-btn:hover:not(:disabled) {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .submit-btn:hover:not(:disabled)::before {
+    opacity: 0;
+  }
+
+  .submit-btn:hover:not(:disabled)::after {
+    transform: translateX(-100%);
+  }
+
+  .submit-btn:active:not(:disabled) {
+    transform: scale(0.97);
+    transition-duration: 0.1s;
+  }
+
+  .color-scheme-btn-sm:hover {
+    transform: none;
+  }
+
+  .color-scheme-btn-sm:active {
+    transform: scale(0.9);
+    transition-duration: 0.1s;
+  }
+
+  .auth-link a:hover {
+    color: inherit;
+  }
+
+  .auth-link a:hover::after {
+    width: 0;
+  }
+}
