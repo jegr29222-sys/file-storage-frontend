@@ -224,9 +224,14 @@
   display: flex;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 32px 36px calc(32px + 290px);
+  padding: 0 32px 36px calc(32px + 56px);
   animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
   min-height: calc(100vh - 100px);
+  transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dashboard-content.sidebar-open {
+  padding-left: calc(32px + 290px);
 }
 
 .sidebar {
@@ -277,27 +282,44 @@
 }
 
 .sidebar.closed {
-  width: 72px;
-  padding: 28px 12px;
-  min-width: 72px;
+  width: 56px;
+  padding: 0;
+  min-width: 56px;
 }
 
 .sidebar.closed h3,
 .sidebar.closed .storage-info,
-.sidebar.closed .folders button span {
+.sidebar.closed .folders button span,
+.sidebar.closed .sidebar-inner {
   opacity: 0;
   visibility: hidden;
   transform: translateX(-10px);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  pointer-events: none;
+}
+
+.sidebar.closed .sidebar-toggle-wrapper {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%);
+  pointer-events: auto;
 }
 
 .sidebar.open h3,
 .sidebar.open .storage-info,
-.sidebar.open .folders button span {
+.sidebar.open .folders button span,
+.sidebar.open .sidebar-inner {
   opacity: 1;
   visibility: visible;
   transform: translateX(0);
   transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s, visibility 0s ease 0.1s;
+  pointer-events: auto;
+}
+
+.sidebar.open .sidebar-toggle-wrapper {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .sidebar.closed .folders button {

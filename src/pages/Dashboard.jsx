@@ -303,7 +303,7 @@ function Dashboard() {
         </div>
       </header>
 
-      <div className="dashboard-content">
+      <div className={`dashboard-content ${sidebarOpen ? 'sidebar-open' : ''}`}>
         {isMobile && sidebarOpen && (
           <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />
         )}
