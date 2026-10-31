@@ -1915,6 +1915,20 @@
    HIGH DPI / RETINA
    ======================================== */
 
+/* Footer credit */
+.dashboard-footer {
+  text-align: center;
+  padding: 24px 16px;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 40px;
+  position: relative;
+  z-index: 10;
+}
+
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .dashboard-container::before,
   .dashboard-container::after {

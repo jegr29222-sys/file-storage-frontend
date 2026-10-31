@@ -580,6 +580,9 @@ function Dashboard() {
         </main>
       </div>
 
+      <footer className="dashboard-footer">
+        Made by jegr
+      </footer>
       <PreviewModal
         file={previewFile}
         isOpen={!!previewFile}
