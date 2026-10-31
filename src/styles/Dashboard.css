@@ -38,6 +38,28 @@
   50% { transform: translateY(-12px); }
 }
 
+@keyframes sidebar-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sidebar-slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
 .dashboard-container {
   min-height: 100vh;
   background: var(--bg-primary);
@@ -217,6 +239,9 @@
   border: 1px solid var(--border-subtle);
   height: fit-content;
   box-shadow: var(--shadow-lg);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
 }
 
 .sidebar::before {
@@ -236,6 +261,43 @@
 .sidebar:hover::before {
   opacity: 1;
   background: var(--accent-gradient);
+}
+
+.sidebar.closed {
+  width: 60px;
+  padding: 28px 16px;
+  min-width: 60px;
+}
+
+.sidebar.closed h3,
+.sidebar.closed .storage-info,
+.sidebar.closed .folders button span {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+.sidebar.open h3,
+.sidebar.open .storage-info,
+.sidebar.open .folders button span {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s, visibility 0s ease 0.1s;
+}
+
+.sidebar.closed .folders button {
+  justify-content: center;
+  padding: 14px;
+}
+
+.sidebar.closed .folders button::after {
+  display: none;
+}
+
+.sidebar.closed .storage-info::before {
+  display: none;
 }
 
 .sidebar h3 {
@@ -289,7 +351,9 @@
 }
 
 .folders button {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   width: 100%;
   padding: 14px 18px;
   text-align: left;
@@ -368,6 +432,12 @@
   box-shadow: 0 0 0 3px var(--border-focus);
 }
 
+.folders button span {
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
 .main-content {
   flex: 1;
   background: var(--bg-tertiary);
@@ -377,6 +447,8 @@
   border-radius: var(--radius-xl);
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-lg);
+  position: relative;
+  min-width: 0;
 }
 
 .main-content::before {
@@ -679,6 +751,43 @@
   transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   animation: shimmer 2s linear infinite;
   box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--bg-hover);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  z-index: 20;
+  flex-shrink: 0;
+}
+
+.sidebar-toggle:hover {
+  background: var(--bg-active);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  transform: scale(1.05);
+}
+
+.sidebar-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--border-focus);
+}
+
+.sidebar-toggle:active {
+  transform: scale(0.96);
+  transition-duration: 0.1s;
 }
 
 /* Drop Zone Styles */
@@ -1439,6 +1548,12 @@
     width: 100%;
     padding: 20px;
     order: 2;
+  }
+
+  .sidebar-toggle {
+    position: static;
+    margin-bottom: 12px;
+    align-self: flex-start;
   }
 
   .storage-info {
