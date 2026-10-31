@@ -300,16 +300,18 @@ function Dashboard() {
           <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />
         )}
         <aside className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
-          <h3>Storage</h3>
-          <div className="storage-info">
-            <h3>Unlimited</h3>
-            <p>No storage limits</p>
-          </div>
-          <div className="folders">
-            <button className={activeTab === 'all' ? 'active' : ''} onClick={() => { setActiveTab('all'); setSelectedFiles(new Set()); }}><span>All Files</span></button>
-            <button className={activeTab === 'shared' ? 'active' : ''} onClick={() => { setActiveTab('shared'); setSelectedFiles(new Set()); }}><span>Shared with Me</span></button>
-            <button className={activeTab === 'links' ? 'active' : ''} onClick={() => { setActiveTab('links'); setSelectedFiles(new Set()); }}><span>Links</span></button>
-            <button className={activeTab === 'trash' ? 'active' : ''} onClick={() => { setActiveTab('trash'); setSelectedFiles(new Set()); }}><span>Trash</span></button>
+          <div className="sidebar-inner">
+            <h3>Storage</h3>
+            <div className="storage-info">
+              <h3>Unlimited</h3>
+              <p>No storage limits</p>
+            </div>
+            <div className="folders">
+              <button className={activeTab === 'all' ? 'active' : ''} onClick={() => { setActiveTab('all'); setSelectedFiles(new Set()); }}><span>All Files</span></button>
+              <button className={activeTab === 'shared' ? 'active' : ''} onClick={() => { setActiveTab('shared'); setSelectedFiles(new Set()); }}><span>Shared with Me</span></button>
+              <button className={activeTab === 'links' ? 'active' : ''} onClick={() => { setActiveTab('links'); setSelectedFiles(new Set()); }}><span>Links</span></button>
+              <button className={activeTab === 'trash' ? 'active' : ''} onClick={() => { setActiveTab('trash'); setSelectedFiles(new Set()); }}><span>Trash</span></button>
+            </div>
           </div>
           <button
             className="sidebar-toggle"

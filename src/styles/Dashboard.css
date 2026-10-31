@@ -245,10 +245,17 @@
   left: 0;
   bottom: 0;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
+  overflow: visible;
   z-index: 50;
   display: flex;
   flex-direction: column;
+}
+
+.sidebar-inner {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .sidebar::before {
@@ -308,6 +315,13 @@
 
 .sidebar.closed .storage-info::before {
   display: none;
+}
+
+.sidebar-inner {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .sidebar h3 {
