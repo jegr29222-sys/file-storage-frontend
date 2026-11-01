@@ -7,6 +7,9 @@ import DropZone from '../components/DropZone';
 import PreviewModal from '../components/PreviewModal';
 import ThemeToggle from '../components/ThemeToggle';
 import ShareModal from '../components/ShareModal';
+import { LenisProvider } from '../components/LenisProvider';
+import { AuroraBackground } from '../components/AuroraBackground';
+import { usePageTransition, useFileRowAnimations, useScrollReveals } from '../hooks/useGSAPAnimations';
 import '../styles/Dashboard.css';
 
 function Dashboard() {
@@ -290,8 +293,13 @@ function Dashboard() {
   const currentFiles = isTrash ? files : filteredFiles;
   const hasSelection = selectedFiles.size > 0;
 
+  usePageTransition();
+  useFileRowAnimations(filteredFiles, selectedFiles, isTrash);
+  useScrollReveals();
+
   return (
     <div className="dashboard-container">
+      <AuroraBackground />
       <header className="dashboard-header">
         <div>
           <h1>File Storage</h1>
@@ -340,8 +348,8 @@ function Dashboard() {
 
       <div className={`dashboard-content ${sidebarOpen ? 'sidebar-open' : ''}`}>
 
-        <main className="main-content">
-          {error && <div className="error-banner">{error}</div>}
+        <main className="main-content scroll-reveal">
+          {error && <div className="error-banner scroll-reveal">{error}</div>}
 
           {!isTrash && (
             <>

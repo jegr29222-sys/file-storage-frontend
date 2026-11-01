@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import SharedFile from './pages/SharedFile';
 import CursorGlow from './components/CursorGlow';
+import { LenisProvider } from './components/LenisProvider';
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth();
@@ -36,10 +37,12 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <Router>
-          <CursorGlow />
-          <AppRoutes />
-        </Router>
+        <LenisProvider>
+          <Router>
+            <CursorGlow />
+            <AppRoutes />
+          </Router>
+        </LenisProvider>
       </AuthProvider>
     </ThemeProvider>
   );
